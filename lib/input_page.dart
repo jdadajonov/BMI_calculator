@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'calculator_brain.dart';
 import 'card_child.dart';
-import 'reusable_card.dart';
 import 'constants.dart';
 import 'results_page.dart';
+import 'reusable_card.dart';
 
 enum Gender {
   male,
@@ -195,25 +197,51 @@ class _InputPageState extends State<InputPage> {
                   ],
                 ),
               ),
-              GestureDetector(
+              BottomButton(
+                text: 'CALCULATE',
                 onTap: () {
+                  CalculatorBrain calc =
+                      CalculatorBrain(height: height, weight: weight);
+
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return ResultsPage();
+                    return ResultsPage(
+                      bmiResult: calc.calculateBMI(),
+                      resultText: calc.getResult(),
+                      interpretation: calc.getInterpretation(),
+                    );
                   }));
                 },
-                child: Container(
-                  child: Text(
-                    'CALCULATE',
-                  ),
-                  color: kBottomContainerColor,
-                  margin: EdgeInsets.only(top: 10.0),
-                  width: double.infinity,
-                  height: kBottomContainerHeight,
-                ),
               )
             ],
           ),
         ));
+  }
+}
+
+class BottomButton extends StatelessWidget {
+  BottomButton({this.text, this.onTap});
+
+  final String text;
+  final Function onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        child: Center(
+          child: Text(
+            text,
+            style: kLargeButtonTextStyle,
+          ),
+        ),
+        color: kBottomContainerColor,
+        margin: EdgeInsets.only(top: 10.0),
+        padding: EdgeInsets.only(bottom: 15.0),
+        width: double.infinity,
+        height: kBottomContainerHeight,
+      ),
+    );
   }
 }
 

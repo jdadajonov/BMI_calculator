@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\src\flutter\flutter"
-export "FLUTTER_APPLICATION_PATH=D:\Flutter_app\quizzler-flutter-challenge-starting\bmi-calculator-flutter"
+export "FLUTTER_ROOT=G:\flutter\flutter"
+export "FLUTTER_APPLICATION_PATH=G:\Projects\BMI_calculator"
 export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build\ios"
